@@ -58,6 +58,17 @@
                                 </div>
                             </form>
                             
+                            <?php 
+                            
+                                if ( isset( $_GET['edit'] ) ) {
+                                    
+                                    $cat_id = $_GET['edit'];
+                                    
+                                    include "includes/update_categories.php";
+                                }
+                            
+                            ?>
+                            
                         </div>
                         
                         <div class="col-xs-6">
@@ -68,6 +79,7 @@
                                         <th>Id</th>
                                         <th>Category Title</th>
                                         <th>Delete Category</th>
+                                        <th>Edit Category</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,6 +99,7 @@
                                             $output .= "<td>{$cat_id}</td>";
                                             $output .= "<td>{$cat_title}</td>";
                                             $output .= "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
+                                            $output .= "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
                                             $output .= "</tr>";
                                             
                                             echo $output;
