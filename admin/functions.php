@@ -1,5 +1,15 @@
 <?php 
 
+
+// Confirm Database Query
+function confirmQuery( $result ) {
+    global $connection;
+
+    if ( !$result ) {
+        die( "QUERY FAILED" . mysqli_error( $connection ) );
+    }
+}
+
 // Insert category data into the database
 function insert_categories() {
 	global $connection;
