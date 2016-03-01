@@ -2,36 +2,33 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Author</th>
-            <th>Comment</th>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
             <th>Email</th>
-            <th>Status</th>
-            <th>In Response to</th>
-            <th>Date</th>
-            <th>Approve</th>
-            <th>Unapprove</th>
-            <th>Delete</th>
+            <th>Role</th>
         </tr>
     </thead>
     <tbody>
         <?php 
 
-            $query = "SELECT * FROM comments";
-            $select_comments = mysqli_query( $connection, $query );
+            $query = "SELECT * FROM users";
+            $select_users = mysqli_query( $connection, $query );
 
-            while ( $row = mysqli_fetch_assoc( $select_comments ) ) {
-                $comment_id = $row['comment_id'];
-                $comment_post_id = $row['comment_post_id'];
-                $comment_author = $row['comment_author'];
-                $comment_content = $row['comment_content'];
-                $comment_email = $row['comment_email'];
-                $comment_status = $row['comment_status'];
-                $comment_date = $row['comment_date'];
+            while ( $row = mysqli_fetch_assoc( $select_users ) ) {
+                $user_id = $row['user_id'];
+                $username = $row['username'];
+                $user_password = $row['user_password'];
+                $user_firstname = $row['user_firstname'];
+                $user_lastname = $row['user_lastname'];
+                $user_email = $row['user_email'];
+                $user_image = $row['user_image'];
+                $user_role = $row['user_role'];
 
                 $output  = "<tr>";
-                $output .= "<td>{$comment_id}</td>";
-                $output .= "<td>{$comment_author}</td>";
-                $output .= "<td>{$comment_content}</td>";
+                $output  = "<td>{$user_id}</td>";
+                $output .= "<td>{$username}</td>";
+                $output .= "<td>{$user_firstname}</td>";
 
                 // $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
                 // $select_categories_id = mysqli_query( $connection, $query );
@@ -43,23 +40,23 @@
                 //     $output .= "<td>{$cat_title}</td>";
                 // }
 
-                $output .= "<td>{$comment_email}</td>";
-                $output .= "<td>{$comment_status}</td>";
+                $output .= "<td>{$user_lastname}</td>";
+                $output .= "<td>{$user_email}</td>";
+                $output .= "<td>{$user_role}</td>";
 
-                $query = "SELECT * FROM posts WHERE post_id=$comment_post_id";
-                $select_post_id_query = mysqli_query( $connection, $query );
+    //             $query = "SELECT * FROM posts WHERE post_id=$comment_post_id";
+    //             $select_post_id_query = mysqli_query( $connection, $query );
 
-                while ( $row = mysqli_fetch_assoc( $select_post_id_query ) ) {
-                	$post_id = $row['post_id'];
-                	$post_title = $row['post_title'];
+    //             while ( $row = mysqli_fetch_assoc( $select_post_id_query ) ) {
+    //             	$post_id = $row['post_id'];
+    //             	$post_title = $row['post_title'];
 
-					$output .= "<td><a href='../post.php?p_id=$post_id'>{$post_title}</a></td>";
-				}
+				// 	$output .= "<td><a href='../post.php?p_id=$post_id'>{$post_title}</a></td>";
+				// }
 				
-				$output .= "<td>{$comment_date}</td>";
-                $output .= "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
-                $output .= "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
-                $output .= "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
+                $output .= "<td><a href='comments.php?approve='>Approve</a></td>";
+                $output .= "<td><a href='comments.php?unapprove='>Unapprove</a></td>";
+                $output .= "<td><a href='comments.php?delete='>Delete</a></td>";
                 $output .= "</tr>";
 
                 echo $output;
