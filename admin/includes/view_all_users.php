@@ -7,6 +7,9 @@
             <th>Lastname</th>
             <th>Email</th>
             <th>Role</th>
+            <th>Approve</th>
+            <th>Unapprove</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -44,12 +47,12 @@
                 $output .= "<td>{$user_email}</td>";
                 $output .= "<td>{$user_role}</td>";
 
-    //             $query = "SELECT * FROM posts WHERE post_id=$comment_post_id";
-    //             $select_post_id_query = mysqli_query( $connection, $query );
+                //  $query = "SELECT * FROM posts WHERE post_id=$comment_post_id";
+                //  $select_post_id_query = mysqli_query( $connection, $query );
 
-    //             while ( $row = mysqli_fetch_assoc( $select_post_id_query ) ) {
-    //             	$post_id = $row['post_id'];
-    //             	$post_title = $row['post_title'];
+                //  while ( $row = mysqli_fetch_assoc( $select_post_id_query ) ) {
+                //  $post_id = $row['post_id'];
+                //  $post_title = $row['post_title'];
 
 				// 	$output .= "<td><a href='../post.php?p_id=$post_id'>{$post_title}</a></td>";
 				// }
