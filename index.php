@@ -12,6 +12,11 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
                 
+                <h1 class="page-header">
+                    Page Heading
+                    <small>Secondary Text</small>
+                </h1>
+                
                 <?php 
                     
                     $query = "SELECT * FROM posts";
@@ -30,11 +35,6 @@
                     
                     ?>
                     
-                    
-                        <h1 class="page-header">
-                            Page Heading
-                            <small>Secondary Text</small>
-                        </h1>
         
                         <!-- First Blog Post -->
                         <h2>
