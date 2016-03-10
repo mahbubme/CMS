@@ -102,7 +102,7 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="post_status">Select Category</label><br>
+		<label for="post_status">Post Status</label><br>
 		<select name="post_status" id="">
 			<option value="<?php echo $post_status; ?>"><?php echo $post_status; ?></option>
 
