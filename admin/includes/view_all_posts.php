@@ -149,7 +149,15 @@
                     $output .= "<td>{$post_status}</td>";
                     $output .= "<td><img width='100' src='../images/{$post_image}' alt='image'></td>";
                     $output .= "<td>{$post_tags}</td>";
-                    $output .= "<td>{$post_comment_count}</td>";
+
+                    $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+                    $send_comment_query = mysqli_query( $connection, $query );
+
+                    $row = mysqli_fetch_array( $send_comment_query );
+                    $comment_id = $row['comment_id'];
+                    $count_comments = mysqli_num_rows( $send_comment_query );
+
+                    $output .= "<td><a href='post_comments.php?id=$post_id'>{$count_comments}</a></td>";
                     $output .= "<td>{$post_date}</td>";
                     $output .= "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
                     $output .= "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
