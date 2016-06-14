@@ -98,7 +98,7 @@
             <tr>
                 <th><input id="selectAllBoxes" type="checkbox"></th>
                 <th>Id</th>
-                <th>Author</th>
+                <th>User</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Status</th>
@@ -121,6 +121,7 @@
                 while ( $row = mysqli_fetch_assoc( $select_posts ) ) {
                     $post_id = $row['post_id'];
                     $post_author = $row['post_author'];
+                    $post_user = $row['post_user'];
                     $post_title = $row['post_title'];
                     $post_category_id = $row['post_category_id'];
                     $post_status = $row['post_status'];
@@ -133,7 +134,17 @@
                     $output  = "<tr>";
                     $output .= "<td><input class='checkBoxes' type='checkbox' name='checkBoxArray[]' value='{$post_id}'></td>";
                     $output .= "<td>{$post_id}</td>";
-                    $output .= "<td>{$post_author}</td>";
+                    
+                    if ( !empty( $post_author ) ) {
+
+                        $output .= "<td>{$post_author}</td>";
+
+                    } elseif ( !empty( $post_user ) ) {
+
+                        $output .= "<td>{$post_user}</td>";
+
+                    }
+
                     $output .= "<td>{$post_title}</td>";
 
                     $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
