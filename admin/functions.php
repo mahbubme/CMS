@@ -1,5 +1,14 @@
 <?php 
 
+// Escape special character to protect sql injection
+function escape( $string ) {
+
+    global $connection;
+
+    return mysqli_real_escape_string( $connection, trim( $string ) );
+
+}
+
 // Users Online
 function users_online() {
 
