@@ -1,10 +1,7 @@
 </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Custom Scripts -->
+	<!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
 
     <!-- Bootstrap Core JavaScript -->

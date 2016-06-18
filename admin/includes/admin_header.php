@@ -55,6 +55,9 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
 </head>
 
 <body>
