@@ -11,11 +11,6 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-
-                <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
-                </h1>
                 
                 <?php
 
@@ -31,13 +26,28 @@
                             die("Query Failed.");
 
                         }
+
+                        if ( isset( $_SESSION['user_role'] ) && $_SESSION['user_role'] == 'admin' ) {
+
+                            $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
+
+                        } else {
+
+                            $query = "SELECT * FROM posts WHERE post_id = $the_post_id AND post_status = 'published'";
+
+                        }
                     
-                        $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
                         $select_all_posts_query = mysqli_query( $connection, $query );
-                        
+
+                        if ( mysqli_num_rows( $select_all_posts_query ) < 1) {
+
+                            echo "<h1 class='text-center'>No posts available</h1>";
+
+                        } else {
+
                         while ( $row = mysqli_fetch_assoc( $select_all_posts_query ) ) {
                             $post_title = $row['post_title'];
-                            $post_author = $row['post_author'];
+                            $post_user = $row['post_user'];
                             $post_date = $row['post_date'];
                             $post_image = $row['post_image'];
                             $post_content = $row['post_content'];
@@ -49,7 +59,7 @@
                                 <a href="#"><?php echo $post_title; ?></a>
                             </h2>
                             <p class="lead">
-                                by <a href="index.php"><?php echo $post_author; ?></a>
+                                by <a href="index.php"><?php echo $post_user; ?></a>
                             </p>
                             <p>
                                 <span class="glyphicon glyphicon-time"></span> 
@@ -65,12 +75,6 @@
                         
                     <?php } 
 
-
-                    }else {
-
-                        header("Location: index.php");
-
-                    } 
 
                     ?>
                 
@@ -168,7 +172,11 @@
                             </div>
                         </div>
 
-                <?php } ?>
+                <?php } } } else {
+
+                    header("Location: index.php");
+
+                } ?>
 
             </div>
 
