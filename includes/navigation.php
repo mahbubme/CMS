@@ -50,10 +50,12 @@
                     
                 
                 ?>
+
                 
                 <li>
                     <a href="admin">Admin</a>
                 </li>
+
                 <li class="<?php echo $contact_class; ?>">
                     <a href="contact.php">Contact</a>
                 </li>
