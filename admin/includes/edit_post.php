@@ -87,9 +87,18 @@
 					$cat_id = $row['cat_id'];
 					$cat_title = $row['cat_title'];
 
-					$output = "<option value='{$cat_id}'>{$cat_title}</option>";
+					
+					if ( $cat_id == $post_category_id ) {
+						
+						echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
 
-					echo $output;
+					} else {
+						
+						echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+					}
+
+					
 				}
 
 			?>
@@ -155,7 +164,7 @@
 
 	<div class="form-group">
 		<label for="post_content">Post Content</label>
-		<textarea class="form-control" name="post_content" id="" cols="30" rows="10"><?php echo $post_content; ?></textarea>
+		<textarea class="form-control" name="post_content" id="" cols="30" rows="10"><?php echo str_replace( '\r\n', '</br>', $post_content ); ?></textarea>
 	</div>
 
 	<div class="form-group">
